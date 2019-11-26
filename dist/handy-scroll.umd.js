@@ -135,9 +135,10 @@ https://github.com/Amphiluke/vue-handy-scroll#readme
       },
       checkVisibility: function checkVisibility() {
         var instance = this;
-        var widget = instance.widget,
-            container = instance.container,
-            scrollBody = instance.scrollBody;
+        var _instance$$refs = instance.$refs,
+            widget = _instance$$refs.widget,
+            container = _instance$$refs.container,
+            scrollBody = _instance$$refs.scrollBody;
         var mustHide = widget.scrollWidth <= widget.offsetWidth;
 
         if (!mustHide) {
@@ -351,11 +352,11 @@ https://github.com/Amphiluke/vue-handy-scroll#readme
     /* style */
     const __vue_inject_styles__ = function (inject) {
       if (!inject) return
-      inject("data-v-f2b58230_0", { source: ".handy-scroll[data-v-f2b58230]{bottom:0;min-height:17px;overflow:auto;position:fixed}.handy-scroll div[data-v-f2b58230]{height:1px;overflow:hidden;pointer-events:none}.handy-scroll div[data-v-f2b58230]:before{content:\"\\A0\"}.handy-scroll[data-v-f2b58230],.handy-scroll div[data-v-f2b58230]{font-size:1px;line-height:0;margin:0;padding:0}.handy-scroll-hidden[data-v-f2b58230]{bottom:9999px}.handy-scroll-hidden div[data-v-f2b58230]:before{content:\"\\A0\\A0\"}.handy-scroll-viewport[data-v-f2b58230]{position:relative}.handy-scroll-area[data-v-f2b58230],.handy-scroll-body[data-v-f2b58230]{overflow:auto}.handy-scroll-viewport .handy-scroll[data-v-f2b58230]{left:0;position:absolute}.handy-scroll-hoverable .handy-scroll[data-v-f2b58230]{opacity:0;transition:opacity .5s ease .3s}.handy-scroll-hoverable:hover .handy-scroll[data-v-f2b58230]{opacity:1}", map: undefined, media: undefined });
+      inject("data-v-c91de19c_0", { source: ".handy-scroll[data-v-c91de19c]{bottom:0;min-height:17px;overflow:auto;position:fixed}.handy-scroll div[data-v-c91de19c]{height:1px;overflow:hidden;pointer-events:none}.handy-scroll div[data-v-c91de19c]:before{content:\"\\A0\"}.handy-scroll[data-v-c91de19c],.handy-scroll div[data-v-c91de19c]{font-size:1px;line-height:0;margin:0;padding:0}.handy-scroll-hidden[data-v-c91de19c]{bottom:9999px}.handy-scroll-hidden div[data-v-c91de19c]:before{content:\"\\A0\\A0\"}.handy-scroll-viewport[data-v-c91de19c]{position:relative}.handy-scroll-area[data-v-c91de19c],.handy-scroll-body[data-v-c91de19c]{overflow:auto}.handy-scroll-viewport .handy-scroll[data-v-c91de19c]{left:0;position:absolute}.handy-scroll-hoverable .handy-scroll[data-v-c91de19c]{opacity:0;transition:opacity .5s ease .3s}.handy-scroll-hoverable:hover .handy-scroll[data-v-c91de19c]{opacity:1}", map: undefined, media: undefined });
 
     };
     /* scoped */
-    const __vue_scope_id__ = "data-v-f2b58230";
+    const __vue_scope_id__ = "data-v-c91de19c";
     /* module identifier */
     const __vue_module_identifier__ = undefined;
     /* functional template */

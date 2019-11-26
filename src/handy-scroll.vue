@@ -117,7 +117,7 @@ export default {
 
     checkVisibility() {
       let instance = this;
-      let {widget, container, scrollBody} = instance;
+      let {widget, container, scrollBody} = instance.$refs;
       let mustHide = (widget.scrollWidth <= widget.offsetWidth);
       if (!mustHide) {
         let containerRect = container.getBoundingClientRect();
