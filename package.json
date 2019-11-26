@@ -1,0 +1,48 @@
+{
+  "name": "vue-handy-scroll",
+  "version": "1.0.0",
+  "description": "Handy floating scroll bar component for Vue.js",
+  "main": "dist/handy-scroll.umd.js",
+  "module": "dist/handy-scroll.esm.js",
+  "unpkg": "dist/handy-scroll.umd.js",
+  "browser": {
+    "./sfc": "src/handy-scroll.vue"
+  },
+  "scripts": {
+    "lint": "eslint \"src/**/*.{js,vue}\"",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amphiluke/vue-handy-scroll.git"
+  },
+  "keywords": [
+    "vue",
+    "scrollbar",
+    "component"
+  ],
+  "author": "Amphiluke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Amphiluke/vue-handy-scroll/issues"
+  },
+  "homepage": "https://github.com/Amphiluke/vue-handy-scroll#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "eslint": "^6.7.1",
+    "eslint-plugin-vue": "^6.0.1",
+    "husky": "^3.1.0",
+    "rollup": "^1.27.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-vue": "^5.1.4",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  }
+}
