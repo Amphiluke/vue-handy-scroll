@@ -1,0 +1,24 @@
+{
+  "name": "vue-handy-scroll-site",
+  "version": "1.0.0",
+  "description": "Live demos for the vue-handy-scroll component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amphiluke/vue-handy-scroll.git"
+  },
+  "keywords": [
+    "scrollbar",
+    "component",
+    "vue"
+  ],
+  "author": "Amphiluke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Amphiluke/vue-handy-scroll/issues"
+  },
+  "homepage": "https://github.com/Amphiluke/vue-handy-scroll#readme"
+}
