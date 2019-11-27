@@ -67,23 +67,31 @@ https://github.com/Amphiluke/vue-handy-scroll#readme
         "default": false
       }
     },
+    // These two flags below need no reactivity
+    skipSyncContainer: false,
+    skipSyncWidget: false,
     data: function data() {
       return {
-        visible: true,
-        // These two flags below need no reactivity, but are placed here just for simplicity
-        skipSyncContainer: false,
-        skipSyncWidget: false
+        visible: true
       };
     },
     mounted: function mounted() {
-      var instance = this;
-      instance.update(); // recalculate scroll bar parameters and set its visibility
+      var _this = this;
 
-      instance.addEventHandlers(); // Set skipSync flags to their initial values (because update() above calls syncWidget())
-
-      instance.skipSyncContainer = instance.skipSyncWidget = false;
+      this.queueUpdate().then(function () {
+        _this.addEventHandlers();
+      });
     },
     methods: {
+      queueUpdate: function queueUpdate() {
+        var instance = this;
+        return instance.$nextTick().then(function () {
+          // Recalculate scroll bar parameters and set its visibility
+          instance.update(); // Set skipSync flags to their initial values (because update() above calls syncWidget())
+
+          instance.$options.skipSyncContainer = instance.$options.skipSyncWidget = false;
+        });
+      },
       addEventHandlers: function addEventHandlers() {
         var instance = this;
 
@@ -107,30 +115,30 @@ https://github.com/Amphiluke/vue-handy-scroll#readme
       handleWidgetScroll: function handleWidgetScroll() {
         var instance = this;
 
-        if (instance.visible && !instance.skipSyncContainer) {
+        if (instance.visible && !instance.$options.skipSyncContainer) {
           instance.syncContainer();
         } // Resume widget->container syncing after the widget scrolling has finished
         // (it might be temporally disabled by the container while syncing the widget)
 
 
-        instance.skipSyncContainer = false;
+        instance.$options.skipSyncContainer = false;
       },
       handleContainerScroll: function handleContainerScroll() {
         var instance = this;
 
-        if (!instance.skipSyncWidget) {
+        if (!instance.$options.skipSyncWidget) {
           instance.syncWidget();
         } // Resume container->widget syncing after the container scrolling has finished
         // (it might be temporally disabled by the widget while syncing the container)
 
 
-        instance.skipSyncWidget = false;
+        instance.$options.skipSyncWidget = false;
       },
       handleContainerFocus: function handleContainerFocus() {
-        var _this = this;
+        var _this2 = this;
 
         setTimeout(function () {
-          return _this.syncWidget();
+          return _this2.syncWidget();
         }, 0);
       },
       checkVisibility: function checkVisibility() {
@@ -160,7 +168,7 @@ https://github.com/Amphiluke/vue-handy-scroll#readme
 
         if (container.scrollLeft !== scrollLeft) {
           // Prevents container’s “scroll” event handler from syncing back again widget scroll position
-          this.skipSyncWidget = true; // Note that this makes container’s “scroll” event handlers execute
+          this.$options.skipSyncWidget = true; // Note that this makes container’s “scroll” event handlers execute
 
           container.scrollLeft = scrollLeft;
         }
@@ -173,7 +181,7 @@ https://github.com/Amphiluke/vue-handy-scroll#readme
 
         if (widget.scrollLeft !== scrollLeft) {
           // Prevents widget’s “scroll” event handler from syncing back again container scroll position
-          this.skipSyncContainer = true; // Note that this makes widget’s “scroll” event handlers execute
+          this.$options.skipSyncContainer = true; // Note that this makes widget’s “scroll” event handlers execute
 
           widget.scrollLeft = scrollLeft;
         }
@@ -352,11 +360,11 @@ https://github.com/Amphiluke/vue-handy-scroll#readme
     /* style */
     const __vue_inject_styles__ = function (inject) {
       if (!inject) return
-      inject("data-v-c91de19c_0", { source: ".handy-scroll[data-v-c91de19c]{bottom:0;min-height:17px;overflow:auto;position:fixed}.handy-scroll div[data-v-c91de19c]{height:1px;overflow:hidden;pointer-events:none}.handy-scroll div[data-v-c91de19c]:before{content:\"\\A0\"}.handy-scroll[data-v-c91de19c],.handy-scroll div[data-v-c91de19c]{font-size:1px;line-height:0;margin:0;padding:0}.handy-scroll-hidden[data-v-c91de19c]{bottom:9999px}.handy-scroll-hidden div[data-v-c91de19c]:before{content:\"\\A0\\A0\"}.handy-scroll-viewport[data-v-c91de19c]{position:relative}.handy-scroll-area[data-v-c91de19c],.handy-scroll-body[data-v-c91de19c]{overflow:auto}.handy-scroll-viewport .handy-scroll[data-v-c91de19c]{left:0;position:absolute}.handy-scroll-hoverable .handy-scroll[data-v-c91de19c]{opacity:0;transition:opacity .5s ease .3s}.handy-scroll-hoverable:hover .handy-scroll[data-v-c91de19c]{opacity:1}", map: undefined, media: undefined });
+      inject("data-v-a4608bae_0", { source: ".handy-scroll[data-v-a4608bae]{bottom:0;min-height:17px;overflow:auto;position:fixed}.handy-scroll div[data-v-a4608bae]{height:1px;overflow:hidden;pointer-events:none}.handy-scroll div[data-v-a4608bae]:before{content:\"\\A0\"}.handy-scroll[data-v-a4608bae],.handy-scroll div[data-v-a4608bae]{font-size:1px;line-height:0;margin:0;padding:0}.handy-scroll-hidden[data-v-a4608bae]{bottom:9999px}.handy-scroll-hidden div[data-v-a4608bae]:before{content:\"\\A0\\A0\"}.handy-scroll-viewport[data-v-a4608bae]{position:relative}.handy-scroll-area[data-v-a4608bae],.handy-scroll-body[data-v-a4608bae]{overflow:auto}.handy-scroll-viewport .handy-scroll[data-v-a4608bae]{left:0;position:absolute}.handy-scroll-hoverable .handy-scroll[data-v-a4608bae]{opacity:0;transition:opacity .5s ease .3s}.handy-scroll-hoverable:hover .handy-scroll[data-v-a4608bae]{opacity:1}", map: undefined, media: undefined });
 
     };
     /* scoped */
-    const __vue_scope_id__ = "data-v-c91de19c";
+    const __vue_scope_id__ = "data-v-a4608bae";
     /* module identifier */
     const __vue_module_identifier__ = undefined;
     /* functional template */

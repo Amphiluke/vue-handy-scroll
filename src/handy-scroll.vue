@@ -59,24 +59,33 @@ export default {
     }
   },
 
+  // These two flags below need no reactivity
+  skipSyncContainer: false,
+  skipSyncWidget: false,
+
   data() {
     return {
-      visible: true,
-      // These two flags below need no reactivity, but are placed here just for simplicity
-      skipSyncContainer: false,
-      skipSyncWidget: false
+      visible: true
     };
   },
 
   mounted() {
-    let instance = this;
-    instance.update(); // recalculate scroll bar parameters and set its visibility
-    instance.addEventHandlers();
-    // Set skipSync flags to their initial values (because update() above calls syncWidget())
-    instance.skipSyncContainer = instance.skipSyncWidget = false;
+    this.queueUpdate().then(() => {
+      this.addEventHandlers();
+    });
   },
 
   methods: {
+    queueUpdate() {
+      let instance = this;
+      return instance.$nextTick().then(() => {
+        // Recalculate scroll bar parameters and set its visibility
+        instance.update();
+        // Set skipSync flags to their initial values (because update() above calls syncWidget())
+        instance.$options.skipSyncContainer = instance.$options.skipSyncWidget = false;
+      });
+    },
+
     addEventHandlers() {
       let instance = this;
       if (!instance.$refs.scrollBody) {
@@ -93,22 +102,22 @@ export default {
 
     handleWidgetScroll() {
       let instance = this;
-      if (instance.visible && !instance.skipSyncContainer) {
+      if (instance.visible && !instance.$options.skipSyncContainer) {
         instance.syncContainer();
       }
       // Resume widget->container syncing after the widget scrolling has finished
       // (it might be temporally disabled by the container while syncing the widget)
-      instance.skipSyncContainer = false;
+      instance.$options.skipSyncContainer = false;
     },
 
     handleContainerScroll() {
       let instance = this;
-      if (!instance.skipSyncWidget) {
+      if (!instance.$options.skipSyncWidget) {
         instance.syncWidget();
       }
       // Resume container->widget syncing after the container scrolling has finished
       // (it might be temporally disabled by the widget while syncing the container)
-      instance.skipSyncWidget = false;
+      instance.$options.skipSyncWidget = false;
     },
 
     handleContainerFocus() {
@@ -137,7 +146,7 @@ export default {
       let {scrollLeft} = widget;
       if (container.scrollLeft !== scrollLeft) {
         // Prevents container’s “scroll” event handler from syncing back again widget scroll position
-        this.skipSyncWidget = true;
+        this.$options.skipSyncWidget = true;
         // Note that this makes container’s “scroll” event handlers execute
         container.scrollLeft = scrollLeft;
       }
@@ -148,7 +157,7 @@ export default {
       let {scrollLeft} = container;
       if (widget.scrollLeft !== scrollLeft) {
         // Prevents widget’s “scroll” event handler from syncing back again container scroll position
-        this.skipSyncContainer = true;
+        this.$options.skipSyncContainer = true;
         // Note that this makes widget’s “scroll” event handlers execute
         widget.scrollLeft = scrollLeft;
       }
