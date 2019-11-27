@@ -1,24 +1,46 @@
 {
   "name": "vue-handy-scroll-site",
-  "version": "1.0.0",
-  "description": "Live demos for the vue-handy-scroll component",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Amphiluke/vue-handy-scroll.git"
+  "dependencies": {
+    "core-js": "^3.3.2",
+    "vue": "^2.6.10"
   },
-  "keywords": [
-    "scrollbar",
-    "component",
-    "vue"
-  ],
-  "author": "Amphiluke",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Amphiluke/vue-handy-scroll/issues"
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
   },
-  "homepage": "https://github.com/Amphiluke/vue-handy-scroll#readme"
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
