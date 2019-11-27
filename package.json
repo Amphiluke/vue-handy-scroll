@@ -8,6 +8,10 @@
   "browser": {
     "./sfc": "src/handy-scroll.vue"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "lint": "eslint \"src/**/*.{js,vue}\"",
     "build": "rollup -c"
