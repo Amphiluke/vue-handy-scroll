@@ -2,57 +2,10 @@
 vue-handy-scroll v1.0.0
 https://github.com/Amphiluke/vue-handy-scroll#readme
 */
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+import Vue from 'vue';
+
+var EventBus = new Vue();
+
 //
 
 var script = {
@@ -92,6 +45,7 @@ var script = {
 
     addEventHandlers() {
       let instance = this;
+
       if (!instance.$refs.scrollBody) {
         let onScroll = () => instance.checkVisibility();
         let onResize = () => instance.update();
@@ -102,6 +56,12 @@ var script = {
           window.removeEventListener("resize", onResize, false);
         });
       }
+
+      EventBus.$on("update", ({sourceElement}) => {
+        if (instance.$el.contains(sourceElement)) {
+          instance.update();
+        }
+      });
     },
 
     handleWidgetScroll() {
@@ -325,11 +285,11 @@ var __vue_staticRenderFns__ = [];
   /* style */
   const __vue_inject_styles__ = function (inject) {
     if (!inject) return
-    inject("data-v-a4608bae_0", { source: ".handy-scroll[data-v-a4608bae]{bottom:0;min-height:17px;overflow:auto;position:fixed}.handy-scroll div[data-v-a4608bae]{height:1px;overflow:hidden;pointer-events:none}.handy-scroll div[data-v-a4608bae]:before{content:\"\\A0\"}.handy-scroll[data-v-a4608bae],.handy-scroll div[data-v-a4608bae]{font-size:1px;line-height:0;margin:0;padding:0}.handy-scroll-hidden[data-v-a4608bae]{bottom:9999px}.handy-scroll-hidden div[data-v-a4608bae]:before{content:\"\\A0\\A0\"}.handy-scroll-viewport[data-v-a4608bae]{position:relative}.handy-scroll-area[data-v-a4608bae],.handy-scroll-body[data-v-a4608bae]{overflow:auto}.handy-scroll-viewport .handy-scroll[data-v-a4608bae]{left:0;position:absolute}.handy-scroll-hoverable .handy-scroll[data-v-a4608bae]{opacity:0;transition:opacity .5s ease .3s}.handy-scroll-hoverable:hover .handy-scroll[data-v-a4608bae]{opacity:1}", map: undefined, media: undefined });
+    inject("data-v-0194b513_0", { source: ".handy-scroll[data-v-0194b513]{bottom:0;min-height:17px;overflow:auto;position:fixed}.handy-scroll div[data-v-0194b513]{height:1px;overflow:hidden;pointer-events:none}.handy-scroll div[data-v-0194b513]:before{content:\"\\A0\"}.handy-scroll[data-v-0194b513],.handy-scroll div[data-v-0194b513]{font-size:1px;line-height:0;margin:0;padding:0}.handy-scroll-hidden[data-v-0194b513]{bottom:9999px}.handy-scroll-hidden div[data-v-0194b513]:before{content:\"\\A0\\A0\"}.handy-scroll-viewport[data-v-0194b513]{position:relative}.handy-scroll-area[data-v-0194b513],.handy-scroll-body[data-v-0194b513]{overflow:auto}.handy-scroll-viewport .handy-scroll[data-v-0194b513]{left:0;position:absolute}.handy-scroll-hoverable .handy-scroll[data-v-0194b513]{opacity:0;transition:opacity .5s ease .3s}.handy-scroll-hoverable:hover .handy-scroll[data-v-0194b513]{opacity:1}", map: undefined, media: undefined });
 
   };
   /* scoped */
-  const __vue_scope_id__ = "data-v-a4608bae";
+  const __vue_scope_id__ = "data-v-0194b513";
   /* module identifier */
   const __vue_module_identifier__ = undefined;
   /* functional template */
@@ -373,4 +333,4 @@ if (GlobalVue) {
 }
 
 export default __vue_component__;
-export { install };
+export { EventBus, install };

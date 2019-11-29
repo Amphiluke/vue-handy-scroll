@@ -21,3 +21,4 @@ if (GlobalVue) {
 }
 
 export default HandyScroll;
+export {default as EventBus} from "./event-bus.js";

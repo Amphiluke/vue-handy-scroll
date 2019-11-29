@@ -20,8 +20,10 @@ let config = {
   output: {
     name: "HandyScroll",
     exports: "named",
-    banner: `/*!\n${pkg.name} v${pkg.version}\n${pkg.homepage}\n*/`
+    banner: `/*!\n${pkg.name} v${pkg.version}\n${pkg.homepage}\n*/`,
+    globals: {vue: "Vue"}
   },
+  external: ["vue"],
   plugins: [
     plugins.resolve,
     plugins.vue
@@ -30,38 +32,37 @@ let config = {
 
 export default [
   {
-    input: config.input,
+    ...config,
     output: {
+      ...config.output,
       file: pkg.module,
-      format: "esm",
-      ...config.output
-    },
-    plugins: config.plugins
+      format: "esm"
+    }
   },
   {
-    input: config.input,
+    ...config,
     output: {
+      ...config.output,
       file: pkg.module.replace(/\.js$/, ".min.js"),
-      format: "esm",
-      ...config.output
+      format: "esm"
     },
     plugins: [...config.plugins, plugins.terser]
   },
   {
-    input: config.input,
+    ...config,
     output: {
+      ...config.output,
       file: pkg.main,
-      format: "umd",
-      ...config.output
+      format: "umd"
     },
     plugins: [...config.plugins, plugins.babel]
   },
   {
-    input: config.input,
+    ...config,
     output: {
+      ...config.output,
       file: pkg.main.replace(/\.js$/, ".min.js"),
-      format: "umd",
-      ...config.output
+      format: "umd"
     },
     plugins: [...config.plugins, plugins.babel, plugins.terser]
   }

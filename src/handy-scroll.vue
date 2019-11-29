@@ -51,6 +51,10 @@
 
 
 <script>
+import EventBus from "./event-bus.js";
+
+export {EventBus};
+
 export default {
   props: {
     customViewport: {
@@ -88,6 +92,7 @@ export default {
 
     addEventHandlers() {
       let instance = this;
+
       if (!instance.$refs.scrollBody) {
         let onScroll = () => instance.checkVisibility();
         let onResize = () => instance.update();
@@ -98,6 +103,12 @@ export default {
           window.removeEventListener("resize", onResize, false);
         });
       }
+
+      EventBus.$on("update", ({sourceElement}) => {
+        if (instance.$el.contains(sourceElement)) {
+          instance.update();
+        }
+      });
     },
 
     handleWidgetScroll() {
