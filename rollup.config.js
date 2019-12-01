@@ -1,6 +1,6 @@
 import pkg from "./package.json";
 import vue from "rollup-plugin-vue";
-import babel from "rollup-plugin-babel";
+import buble from "@rollup/plugin-buble";
 import {terser} from "rollup-plugin-terser";
 import resolve from "rollup-plugin-node-resolve";
 
@@ -11,7 +11,7 @@ let plugins = {
   terser: terser({
     output: {comments: /^!/}
   }),
-  babel: babel(),
+  buble: buble(),
   resolve: resolve()
 };
 
@@ -55,7 +55,7 @@ export default [
       file: pkg.main,
       format: "umd"
     },
-    plugins: [...config.plugins, plugins.babel]
+    plugins: [...config.plugins, plugins.buble]
   },
   {
     ...config,
@@ -64,6 +64,6 @@ export default [
       file: pkg.main.replace(/\.js$/, ".min.js"),
       format: "umd"
     },
-    plugins: [...config.plugins, plugins.babel, plugins.terser]
+    plugins: [...config.plugins, plugins.buble, plugins.terser]
   }
 ];
