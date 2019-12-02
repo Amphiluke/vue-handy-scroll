@@ -6,7 +6,12 @@ import resolve from "rollup-plugin-node-resolve";
 
 let plugins = {
   vue: vue({
-    template: {isProduction: true}
+    template: {
+      isProduction: true,
+      compilerOptions: {
+        preserveWhitespace: false
+      }
+    }
   }),
   terser: terser({
     output: {comments: /^!/}

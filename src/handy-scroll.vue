@@ -13,6 +13,7 @@
       <div
         ref="container"
         class="handy-scroll-area"
+        :class="{'handy-scroll-unobtrusive': unobtrusive}"
         @scroll="handleContainerScroll"
         @focusin="handleContainerFocus"
       >
@@ -34,6 +35,7 @@
     v-else
     ref="container"
     class="handy-scroll-area"
+    :class="{'handy-scroll-unobtrusive': unobtrusive}"
     @scroll="handleContainerScroll"
     @focusin="handleContainerFocus"
   >
@@ -60,6 +62,10 @@ export default {
     customViewport: {
       type: Boolean,
       default: false
+    },
+    unobtrusive: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -83,7 +89,7 @@ export default {
     queueUpdate() {
       let instance = this;
       return instance.$nextTick().then(() => {
-        // Recalculate scroll bar parameters and set its visibility
+        // Recalculate scrollbar parameters and set its visibility
         instance.update();
         // Set skipSync flags to their initial values (because update() above calls syncWidget())
         instance.$options.skipSyncContainer = instance.$options.skipSyncWidget = false;
@@ -104,9 +110,9 @@ export default {
         });
       }
 
-      EventBus.$on("update", ({sourceElement}) => {
-        if (instance.$el.contains(sourceElement)) {
-          instance.update();
+      EventBus.$on("update", ({sourceElement} = {}) => {
+        if (!sourceElement || instance.$el.contains(sourceElement)) {
+          instance.queueUpdate();
         }
       });
     },
@@ -184,7 +190,7 @@ export default {
         widgetStyle.left = `${container.getBoundingClientRect().left}px`;
       }
       strut.style.width = `${scrollWidth}px`;
-      // Fit widget height to the native scroll bar height if needed
+      // Fit widget height to the native scrollbar height if needed
       if (scrollWidth > clientWidth) {
         widgetStyle.height = `${widget.offsetHeight - widget.clientHeight + 1}px`; // +1px JIC
       }
@@ -237,11 +243,11 @@ export default {
     left: 0;
     position: absolute;
   }
-  .handy-scroll-hoverable .handy-scroll {
+  .handy-scroll-unobtrusive .handy-scroll {
     opacity: 0;
     transition: opacity 0.5s ease 0.3s;
   }
-  .handy-scroll-hoverable:hover .handy-scroll {
+  .handy-scroll-unobtrusive:hover .handy-scroll {
     opacity: 1;
   }
 </style>
