@@ -1,28 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <DemoHandscrolls :unobtrusive="unobtrusive"/>
+    <DemoPopup :unobtrusive="unobtrusive"/>
+    <DemoUnobtrusive :unobtrusive="unobtrusive" @change="unobtrusive = $event"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DemoHandscrolls from "./components/DemoHandscrolls.vue";
+import DemoPopup from "./components/DemoPopup.vue";
+import DemoUnobtrusive from "./components/DemoUnobtrusive.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    DemoHandscrolls,
+    DemoPopup,
+    DemoUnobtrusive
+  },
+  props: {
+    unobtrusive: {
+      type: Boolean,
+      default: false
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
