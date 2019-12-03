@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/vue-handy-scroll/" : "/"
+  publicPath: process.env.NODE_ENV === "production" ? "/vue-handy-scroll/dist/" : "/"
 };
