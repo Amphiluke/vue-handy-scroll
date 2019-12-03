@@ -37,6 +37,10 @@
     a {
       color: #42b983;
     }
+    img {
+      max-width: 100vw;
+      height: auto;
+    }
   </style>
 </head>
 <body>
@@ -99,12 +103,12 @@
 <script type="text/x-template" id="app-tpl">
   <template>
     <div id="app">
-      <img alt="Vue logo" src="../src/assets/logo.png" width="200" height="200" @click="updateHS">
       <handy-scroll ref="hs">
+        <img alt="" src="./preview.jpg" width="2591" height="1357" @click="updateHS">
         <hello-world msg="Welcome to Your Vue.js App"></hello-world>
       </handy-scroll>
-      <img alt="Vue logo" src="../src/assets/logo.png" width="200" height="200" @click="updateHS2">
       <handy-scroll ref="hs2">
+        <img alt="" src="./preview.jpg" width="2591" height="1357" @click="updateHS2">
         <hello-world msg="Farewell to Your Vue.js App"></hello-world>
       </handy-scroll>
     </div>

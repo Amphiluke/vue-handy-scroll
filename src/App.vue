@@ -18,11 +18,10 @@ export default {
     DemoPopup,
     DemoUnobtrusive
   },
-  props: {
-    unobtrusive: {
-      type: Boolean,
-      default: false
-    }
+  data() {
+    return {
+      unobtrusive: false
+    };
   }
 }
 </script>

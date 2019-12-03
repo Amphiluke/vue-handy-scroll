@@ -7,7 +7,7 @@
 
     <h3>Live demo</h3>
     <form action="#" autocomplete="off">
-      <label><input type="checkbox" id="is-unobtrusive" :checked="unobtrusive" @change="$emit('change', $event.target.checked)"> Unobtrusive mode <b></b></label><br>
+      <label><input type="checkbox" id="is-unobtrusive" :checked="unobtrusive" @change="$emit('change', $event.target.checked)"> Unobtrusive mode: <b>{{ unobtrusive ? "on" : "off" }}</b></label><br>
       <span class="small">Check/uncheck this checkbox to toggle the “unobtrusive” mode for all component instances on this page</span>
     </form>
   </section>
