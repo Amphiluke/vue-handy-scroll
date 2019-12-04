@@ -25,7 +25,7 @@ import HandyScroll from "vue-handy-scroll";
 If you don’t use module bundlers but instead prefer using the component directly in a browser, you may add the component on your page through some CDN such as [jsDelivr](https://www.jsdelivr.com/features) or [unpkg](https://unpkg.com/). E.g.:
 ```html
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/amphiluke/vue-handy-scroll/dist/handy-scroll.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-handy-scroll/dist/handy-scroll.umd.min.js"></script>
 
 or
 
@@ -39,7 +39,7 @@ or
 
 Add the component in your templates as follows:
 
-```vue
+```html
 <HandyScroll>
   <!-- Place horizontally wide contents here -->
 </HandyScroll>
@@ -47,7 +47,7 @@ Add the component in your templates as follows:
 
 or (in DOM templates):
 
-```vue
+```html
 <handy-scroll>
   <!-- Place horizontally wide contents here -->
 </handy-scroll>
@@ -69,7 +69,7 @@ As demonstrated by the example above, when emitting the event, you may pass a re
 
 Sometimes, you may want to place the floating scrollbar in a container living in a positioned box (e.g. in a modal popup with `position: fixed`). To do so, the component needs to be switched to a special functioning mode by specifying the prop `custom-viewport`:
 
-```vue
+```html
 <HandyScroll :custom-viewport="true">
   <!-- Place horizontally wide contents here -->
 </HandyScroll>
@@ -93,7 +93,7 @@ The resulting rendered HTML will have the following structure:
 
 Notice the placement of named slots in this structure (denoted by comments for clarity). You may use them to distribute content as needed. E.g.:
 
-```vue
+```html
 <HandyScroll :custom-viewport="true">
   <template #vieport-before>
     whatever meaningful to be placed between
@@ -111,7 +111,7 @@ The component provides some basic styles for elements with classes `.handy-scrol
 
 You can make the floating scrollbar more “unobtrusive” so that it will appear only when the mouse pointer hovers over the scrollable container. To do so just set the prop `unobtrusive` to `true`:
 
-```vue
+```html
 <HandyScroll :unobtrusive="true">
   <!-- Place horizontally wide contents here -->
 </HandyScroll>
@@ -120,3 +120,5 @@ You can make the floating scrollbar more “unobtrusive” so that it will appea
 ## Live demos
 
 Check out live usage examples [here](https://amphiluke.github.io/vue-handy-scroll/dist/).
+
+You may also find useful this [vue-handy-scroll Pen Collection](https://codepen.io/collection/naLgyg/?grid_type=list) on Codepen.
