@@ -1,5 +1,5 @@
 /*!
-vue-handy-scroll v1.0.0
+vue-handy-scroll v1.0.1
 https://amphiluke.github.io/vue-handy-scroll/dist/
 */
 import Vue from 'vue';
