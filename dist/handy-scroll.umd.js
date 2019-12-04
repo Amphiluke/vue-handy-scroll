@@ -1,6 +1,6 @@
 /*!
 vue-handy-scroll v1.0.0
-https://github.com/Amphiluke/vue-handy-scroll#readme
+https://amphiluke.github.io/vue-handy-scroll/dist/
 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue')) :
