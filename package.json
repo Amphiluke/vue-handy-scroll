@@ -1,9 +1,10 @@
 {
   "name": "vue-handy-scroll-site",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve-prod": "vue-cli-service serve --mode=production",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -12,7 +13,7 @@
     "normalize.css": "^8.0.1",
     "v-click-outside": "^3.0.0",
     "vue": "^2.6.10",
-    "vue-handy-scroll": "file:../vue-handy-scroll/vue-handy-scroll-1.0.0.tgz"
+    "vue-handy-scroll": "^1.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
