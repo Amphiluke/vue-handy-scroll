@@ -8,7 +8,7 @@ https://amphiluke.github.io/vue-handy-scroll/dist/
   (global = global || self, factory(global.HandyScroll = {}, global.Vue));
 }(this, (function (exports, Vue) { 'use strict';
 
-  Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue;
+  Vue = Vue && Object.prototype.hasOwnProperty.call(Vue, 'default') ? Vue['default'] : Vue;
 
   var EventBus = new Vue();
 
