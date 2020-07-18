@@ -304,7 +304,7 @@ var __vue_staticRenderFns__ = [];
   
 
   
-  const __vue_component__ = normalizeComponent(
+  const __vue_component__ = /*#__PURE__*/normalizeComponent(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,
