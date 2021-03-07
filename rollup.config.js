@@ -3,16 +3,13 @@ import vue from "rollup-plugin-vue";
 import buble from "@rollup/plugin-buble";
 import {terser} from "rollup-plugin-terser";
 import resolve from "rollup-plugin-node-resolve";
+import postcss from "rollup-plugin-postcss";
 
 let plugins = {
   vue: vue({
-    template: {
-      isProduction: true,
-      compilerOptions: {
-        preserveWhitespace: false
-      }
-    }
+    preprocessStyles: true
   }),
+  postcss: postcss({minimize: true}),
   terser: terser({
     output: {comments: /^!/}
   }),
@@ -31,7 +28,8 @@ let config = {
   external: ["vue"],
   plugins: [
     plugins.resolve,
-    plugins.vue
+    plugins.vue,
+    plugins.postcss
   ]
 };
 
