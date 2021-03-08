@@ -18,10 +18,10 @@ let plugins = {
 };
 
 let config = {
-  input: "src/wrapper.js",
+  input: "src/handy-scroll.vue",
   output: {
     name: "HandyScroll",
-    exports: "named",
+    exports: "default",
     banner: `/*!\n${pkg.name} v${pkg.version}\n${pkg.homepage}\n*/`,
     globals: {vue: "Vue"}
   },

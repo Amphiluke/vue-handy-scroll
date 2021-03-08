@@ -55,9 +55,9 @@
 <script>
 import EventBus from "./event-bus.js";
 
-export {EventBus};
-
 export default {
+  EventBus,
+
   props: {
     customViewport: {
       type: Boolean,
@@ -69,20 +69,25 @@ export default {
     }
   },
 
-  // These two flags below need no reactivity
-  skipSyncContainer: false,
-  skipSyncWidget: false,
-
   data() {
     return {
       visible: true
     };
   },
 
+  created() {
+    // These two flags below need no reactivity
+    this.skipSyncContainer = this.skipSyncWidget = false;
+  },
+
   mounted() {
     this.queueUpdate().then(() => {
       this.addEventHandlers();
     });
+  },
+
+  unmounted() {
+    this.removeEventHandlers();
   },
 
   methods: {
@@ -92,49 +97,51 @@ export default {
         // Recalculate scrollbar parameters and set its visibility
         instance.update();
         // Set skipSync flags to their initial values (because update() above calls syncWidget())
-        instance.$options.skipSyncContainer = instance.$options.skipSyncWidget = false;
+        instance.skipSyncContainer = instance.skipSyncWidget = false;
       });
     },
 
     addEventHandlers() {
       let instance = this;
-
       if (!instance.$refs.scrollBody) {
-        let onScroll = () => instance.checkVisibility();
-        let onResize = () => instance.update();
+        let onScroll = instance.windowScrollHandler = () => instance.checkVisibility();
+        let onResize = instance.windowResizeHandler = () => instance.update();
         window.addEventListener("scroll", onScroll, false);
         window.addEventListener("resize", onResize, false);
-        instance.$once("hook:beforeDestroy", () => {
-          window.removeEventListener("scroll", onScroll, false);
-          window.removeEventListener("resize", onResize, false);
-        });
       }
-
-      EventBus.$on("update", ({sourceElement} = {}) => {
+      let onUpdate = instance.updateHandler = ({sourceElement} = {}) => {
         if (!sourceElement || instance.$el.contains(sourceElement)) {
           instance.queueUpdate();
         }
-      });
+      };
+      EventBus.$on("update", onUpdate);
+    },
+
+    removeEventHandlers() {
+      let instance = this;
+      window.removeEventListener("scroll", instance.windowScrollHandler, false);
+      window.removeEventListener("resize", instance.windowResizeHandler, false);
+      EventBus.$off("update", instance.updateHandler);
     },
 
     handleWidgetScroll() {
       let instance = this;
-      if (instance.visible && !instance.$options.skipSyncContainer) {
+      if (instance.visible && !instance.skipSyncContainer) {
         instance.syncContainer();
       }
       // Resume widget->container syncing after the widget scrolling has finished
       // (it might be temporally disabled by the container while syncing the widget)
-      instance.$options.skipSyncContainer = false;
+      instance.skipSyncContainer = false;
     },
 
     handleContainerScroll() {
       let instance = this;
-      if (!instance.$options.skipSyncWidget) {
+      if (!instance.skipSyncWidget) {
         instance.syncWidget();
       }
       // Resume container->widget syncing after the container scrolling has finished
       // (it might be temporally disabled by the widget while syncing the container)
-      instance.$options.skipSyncWidget = false;
+      instance.skipSyncWidget = false;
     },
 
     handleContainerFocus() {
@@ -163,7 +170,7 @@ export default {
       let {scrollLeft} = widget;
       if (container.scrollLeft !== scrollLeft) {
         // Prevents container’s “scroll” event handler from syncing back again widget scroll position
-        this.$options.skipSyncWidget = true;
+        this.skipSyncWidget = true;
         // Note that this makes container’s “scroll” event handlers execute
         container.scrollLeft = scrollLeft;
       }
@@ -174,7 +181,7 @@ export default {
       let {scrollLeft} = container;
       if (widget.scrollLeft !== scrollLeft) {
         // Prevents widget’s “scroll” event handler from syncing back again container scroll position
-        this.$options.skipSyncContainer = true;
+        this.skipSyncContainer = true;
         // Note that this makes widget’s “scroll” event handlers execute
         widget.scrollLeft = scrollLeft;
       }

@@ -1,6 +1,6 @@
 # vue-handy-scroll
 
-Handy floating scrollbar component for Vue.js v2.6.0+.
+Handy floating scrollbar component for Vue 3.
 
 ## Synopsis
 
@@ -35,6 +35,29 @@ or
 
 ## Usage
 
+### Component registration
+
+You can register the component for your app either [globally](https://v3.vuejs.org/guide/component-registration.html#global-registration)
+
+```javascript
+import HandyScroll from "vue-handy-scroll";
+
+let app = Vue.createApp({...})
+app.component("handy-scroll", HandyScroll);
+```
+
+or [locally](https://v3.vuejs.org/guide/component-registration.html#local-registration)
+
+```javascript
+import HandyScroll from "vue-handy-scroll";
+
+let app = Vue.createApp({
+  components: {
+    "handy-scroll": HandyScroll
+  }
+});
+```
+
 ### Adding the component in templates
 
 Add the component in your templates as follows:
@@ -58,9 +81,9 @@ or (in DOM templates):
 If the layout of your web page may dynamically change, and these changes affect scrollable containers, then you need a way to update the scrollbar every time the container’s sizes change. This can be done by emitting the event `update` through the _event bus_ provided by the component.
 
 ```javascript
-import {EventBus} from "vue-handy-scroll";
+import HandyScroll from "vue-handy-scroll";
 // ... some actions which change the total scroll width of the container ...
-EventBus.$emit("update", {sourceElement: this.$el});
+HandyScroll.EventBus.$emit("update", {sourceElement: this.$el});
 ```
 
 As demonstrated by the example above, when emitting the event, you may pass a reference to the source element. The component uses this reference to detect which scrollable container is actually affected, and updates only the one that contains the provided source element inside it. If you emit the `update` event without providing the source element, _all_ instances of the component will be updated.
