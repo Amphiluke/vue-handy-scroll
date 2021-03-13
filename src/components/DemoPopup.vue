@@ -41,84 +41,13 @@
       <!-- eslint-enable vue/max-attributes-per-line -->
     </HandyScroll>
 
-    <h3>Demo’s code (key parts)</h3>
-    <HandyScroll :unobtrusive="unobtrusive">
-      <pre class="hs-code hs-code-scrollable">&lt;template&gt;
-  &lt;!-- skipping --&gt;
-  <span class="hs-highlight">&lt;HandyScroll
-    class=&quot;hs-popup&quot;
-    :class=&quot;{&#x27;hs-popup-hidden&#x27;: popupHidden}&quot;
-    ref=&quot;popup&quot;
-    :custom-viewport=&quot;true&quot;
-  &gt;</span>
-    <span class="hs-highlight">&lt;template #body-before&gt;</span>
-      &lt;h4&gt;“Along the River During the Qingming Festival”&lt;/h4&gt;
-    <span class="hs-highlight">&lt;/template&gt;</span>
-    &lt;img src=&quot;../assets/images/along-the-river.jpg&quot; alt=&quot;&quot; width=&quot;10561&quot; height=&quot;1000&quot;&gt;
-    <span class="hs-highlight">&lt;template #body-after&gt;</span>
-      &lt;p&gt;&lt;em&gt;“Along the River During the Qingming Festival”&lt;/em&gt; (fragment), painting by Zhang Zeduan (12th century)&lt;/p&gt;
-    <span class="hs-highlight">&lt;/template&gt;</span>
-  <span class="hs-highlight">&lt;/HandyScroll&gt;</span>
-  &lt;!-- skipping --&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  <span class="hs-highlight">import HandyScroll from &quot;vue-handy-scroll&quot;;</span>
-
-  export default {
-    name: &quot;DemoPopup&quot;,
-    components: {
-      <span class="hs-highlight">HandyScroll</span>
-    },
-    data() {
-      return {
-        popupHidden: true
-      }
-    },
-    methods: {
-      openPopup() {
-        this.popupHidden = false;
-        <span class="hs-highlight">HandyScroll.EventBus.emit(&quot;update&quot;, {sourceElement: this.$refs.popup.$el});</span>
-      }
-    }
-  };
-&lt;/script&gt;
-
-&lt;style lang=&quot;less&quot; scoped&gt;
-  .demo-popup .hs-popup {
-    height:550px;
-    left:50%;
-    margin-left:-700px / 2;
-    padding:10px;
-    <span class="hs-highlight">position:fixed;</span>
-    top:20px;
-    width:700px;
-    z-index:1;
-
-    &amp;.hs-popup-hidden {
-      left:-99999px;
-      top:-99999px;
-    }
-
-    // About ::v-deep - https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
-    <span class="hs-highlight">&amp; ::v-deep(.handy-scroll-body) {</span>
-      height:550px;
-      width:100%;
-    }
-
-    <span class="hs-highlight">&amp; ::v-deep(.handy-scroll:not(.handy-scroll-hidden)) {</span>
-      bottom:10px; // same value as the bottom padding
-      left:10px; // same value as the left padding
-    }
-
-    <span class="hs-highlight">&amp; ::v-deep(.handy-scroll-area) {</span>
-      font-size:0;
-      line-height:0;
-      width:100%;
-    }
-  }
-&lt;/style&gt;</pre>
-    </HandyScroll>
+    <h3>Demo’s code</h3>
+    <!-- eslint-disable vue/max-attributes-per-line -->
+    <iframe height="370" style="width: 100%;" scrolling="no" title="vue-handy-scroll@2 - positioned popup" src="https://codepen.io/amphiluke/embed/eYBxbRv?height=370&amp;theme-id=light&amp;default-tab=js" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href='https://codepen.io/amphiluke/pen/eYBxbRv'>vue-handy-scroll@2 - positioned popup</a> by Amphiluke
+      (<a href='https://codepen.io/amphiluke'>@amphiluke</a>) on <a href='https://codepen.io'>CodePen</a>.
+    </iframe>
+    <!-- eslint-enable vue/max-attributes-per-line -->
   </section>
 </template>
 
@@ -237,13 +166,5 @@ export default {
     &:hover {
       box-shadow:0 2px 3px -2px @text-color;
     }
-  }
-
-  .hs-code-scrollable {
-    display:inline-block;
-    margin:0;
-    max-width:none;
-    vertical-align:top;
-    width:auto;
   }
 </style>

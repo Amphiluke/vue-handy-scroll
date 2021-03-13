@@ -38,49 +38,12 @@
     </div>
 
     <h3>Demo’s code</h3>
-    <pre class="hs-code">&lt;template&gt;
-  &lt;!-- skipping --&gt;
-  <span class="hs-highlight">&lt;HandyScroll class=&quot;handscrolls&quot; ref=&quot;handscrolls&quot; :unobtrusive=&quot;unobtrusive&quot;&gt;</span>
-    &lt;img
-      v-for=&quot;item in handscrolls&quot;
-      :key=&quot;item.id&quot;
-      :class=&quot;{active: handscroll === item.id}&quot;
-      :src=&quot;item.src&quot;
-      :alt=&quot;item.description&quot;
-      :width=&quot;item.width&quot;
-      :height=&quot;item.height&quot;
-    &gt;
-  <span class="hs-highlight">&lt;/HandyScroll&gt;</span>
-  &lt;!-- skipping --&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-  <span class="hs-highlight">import HandyScroll from &quot;vue-handy-scroll&quot;;</span>
-
-  export default {
-    name: &quot;DemoHandscrolls&quot;,
-    components: {
-      <span class="hs-highlight">HandyScroll</span>
-    },
-    props: {
-      unobtrusive: {
-        type: Boolean,
-        default: false
-      }
-    },
-    data() {
-      return {
-        handscroll: &quot;along-the-river&quot;,
-        handscrolls: [/* skipping */]
-      };
-    },
-    watch: {
-      handscroll() {
-        <span class="hs-highlight">HandyScroll.EventBus.emit(&quot;update&quot;, {sourceElement: this.$refs.handscrolls.$el});</span>
-      }
-    }
-  };
-&lt;/script&gt;</pre>
+    <!-- eslint-disable vue/max-attributes-per-line -->
+    <iframe height="370" style="width: 100%;" scrolling="no" title="vue-handy-scroll@2 - Handscrolls" src="https://codepen.io/amphiluke/embed/QWGYJoX?height=370&amp;theme-id=light&amp;default-tab=js" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+      See the Pen <a href='https://codepen.io/amphiluke/pen/QWGYJoX'>vue-handy-scroll@2 - Handscrolls</a> by Amphiluke
+      (<a href='https://codepen.io/amphiluke'>@amphiluke</a>) on <a href='https://codepen.io'>CodePen</a>.
+    </iframe>
+    <!-- eslint-enable vue/max-attributes-per-line -->
   </section>
 </template>
 
