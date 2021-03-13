@@ -114,14 +114,14 @@ export default {
           instance.queueUpdate();
         }
       };
-      EventBus.$on("update", onUpdate);
+      EventBus.on("update", onUpdate);
     },
 
     removeEventHandlers() {
       let instance = this;
       window.removeEventListener("scroll", instance.windowScrollHandler, false);
       window.removeEventListener("resize", instance.windowResizeHandler, false);
-      EventBus.$off("update", instance.updateHandler);
+      EventBus.off("update", instance.updateHandler);
     },
 
     handleWidgetScroll() {

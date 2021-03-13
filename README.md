@@ -83,7 +83,7 @@ If the layout of your web page may dynamically change, and these changes affect 
 ```javascript
 import HandyScroll from "vue-handy-scroll";
 // ... some actions which change the total scroll width of the container ...
-HandyScroll.EventBus.$emit("update", {sourceElement: this.$el});
+HandyScroll.EventBus.emit("update", {sourceElement: this.$el});
 ```
 
 As demonstrated by the example above, when emitting the event, you may pass a reference to the source element. The component uses this reference to detect which scrollable container is actually affected, and updates only the one that contains the provided source element inside it. If you emit the `update` event without providing the source element, _all_ instances of the component will be updated.

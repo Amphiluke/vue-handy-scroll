@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/Amphiluke/vue-handy-scroll/issues"
   },
-  "homepage": "https://amphiluke.github.io/vue-handy-scroll/dist/",
+  "homepage": "https://amphiluke.github.io/vue-handy-scroll/",
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.3",
     "@vue/compiler-sfc": "^3.0.7",

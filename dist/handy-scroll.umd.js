@@ -1,6 +1,6 @@
 /*!
 vue-handy-scroll v2.0.0
-https://amphiluke.github.io/vue-handy-scroll/dist/
+https://amphiluke.github.io/vue-handy-scroll/
 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue')) :
@@ -11,7 +11,7 @@ https://amphiluke.github.io/vue-handy-scroll/dist/
   var handlerRegistry = Object.create(null);
 
   var EventBus = {
-    $emit: function $emit(event) {
+    emit: function emit(event) {
       var args = [], len = arguments.length - 1;
       while ( len-- > 0 ) args[ len ] = arguments[ len + 1 ];
 
@@ -21,7 +21,7 @@ https://amphiluke.github.io/vue-handy-scroll/dist/
       }
     },
 
-    $on: function $on(event, handler) {
+    on: function on(event, handler) {
       var handlers = handlerRegistry[event];
       if (!handlers) {
         handlers = [];
@@ -30,7 +30,7 @@ https://amphiluke.github.io/vue-handy-scroll/dist/
       handlers.push(handler);
     },
 
-    $off: function $off(event, handler) {
+    off: function off(event, handler) {
       var handlers = handlerRegistry[event];
       if (handlers) {
         var index = handlers.indexOf(handler);
@@ -108,14 +108,14 @@ https://amphiluke.github.io/vue-handy-scroll/dist/
             instance.queueUpdate();
           }
         };
-        EventBus.$on("update", onUpdate);
+        EventBus.on("update", onUpdate);
       },
 
       removeEventHandlers: function removeEventHandlers() {
         var instance = this;
         window.removeEventListener("scroll", instance.windowScrollHandler, false);
         window.removeEventListener("resize", instance.windowResizeHandler, false);
-        EventBus.$off("update", instance.updateHandler);
+        EventBus.off("update", instance.updateHandler);
       },
 
       handleWidgetScroll: function handleWidgetScroll() {

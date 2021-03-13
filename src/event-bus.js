@@ -1,14 +1,14 @@
 let handlerRegistry = Object.create(null);
 
 let EventBus = {
-  $emit(event, ...args) {
+  emit(event, ...args) {
     let handlers = handlerRegistry[event];
     if (handlers) {
       handlers.forEach(handler => handler(...args));
     }
   },
 
-  $on(event, handler) {
+  on(event, handler) {
     let handlers = handlerRegistry[event];
     if (!handlers) {
       handlers = [];
@@ -17,7 +17,7 @@ let EventBus = {
     handlers.push(handler);
   },
 
-  $off(event, handler) {
+  off(event, handler) {
     let handlers = handlerRegistry[event];
     if (handlers) {
       let index = handlers.indexOf(handler);
