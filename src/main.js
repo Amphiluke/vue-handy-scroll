@@ -1,11 +1,15 @@
-import Vue from "vue";
-import App from "./App.vue";
-import "@/assets/css/global.less";
+import "../assets/css/global.less";
+import {createApp, resolveComponent, h} from "vue";
+import DemoSection from "./DemoSection.vue";
 
-Vue.config.productionTip = false;
+createApp({
+  components: {
+    DemoSection
+  },
 
-new Vue({
-  render: h => h(App),
-}).$mount("#app");
+  render() {
+    return h(resolveComponent("DemoSection"));
+  }
+}).mount("#app");
 
 document.body.classList.remove("loading");

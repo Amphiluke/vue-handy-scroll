@@ -1,5 +1,8 @@
 <template>
-  <section id="demo-popup" class="demo-popup">
+  <section
+    id="demo-popup"
+    class="demo-popup"
+  >
     <h2>#2: handy-scroll widget in a popup</h2>
 
     <h3>Description</h3>
@@ -15,13 +18,13 @@
       </span>
     </p>
     <HandyScroll
+      ref="popup"
       class="hs-popup"
       :class="{'hs-popup-hidden': popupHidden}"
-      ref="popup"
       :unobtrusive="unobtrusive"
       :custom-viewport="true"
-      v-click-outside="onClickOutside"
     >
+      <!-- eslint-disable vue/max-attributes-per-line -->
       <template #body-before>
         <span
           class="hs-popup-close"
@@ -29,10 +32,13 @@
         />
         <h4>“Along the River During the Qingming Festival”</h4>
       </template>
-      <img src="../assets/images/along-the-river.jpg" alt="“Along the River During the Qingming Festival” by Zhang Zeduan" width="10561" height="1000">
+      <img src="assets/images/along-the-river.jpg" alt="“Along the River During the Qingming Festival” by Zhang Zeduan" width="10561" height="1000">
       <template #body-after>
-        <p class="small"><a href="https://en.wikipedia.org/wiki/Along_the_River_During_the_Qingming_Festival" rel="nofollow noopener" target="_blank"><em>“Along the River During the Qingming Festival”</em></a> (fragment), painting by Zhang Zeduan (12th century)</p>
+        <p class="small">
+          <a href="https://en.wikipedia.org/wiki/Along_the_River_During_the_Qingming_Festival" rel="nofollow noopener" target="_blank"><em>“Along the River During the Qingming Festival”</em></a> (fragment), painting by Zhang Zeduan (12th century)
+        </p>
       </template>
+      <!-- eslint-enable vue/max-attributes-per-line -->
     </HandyScroll>
 
     <h3>Demo’s code (key parts)</h3>
@@ -57,7 +63,7 @@
 &lt;/template&gt;
 
 &lt;script&gt;
-  <span class="hs-highlight">import HandyScroll, {EventBus} from &quot;vue-handy-scroll&quot;;</span>
+  <span class="hs-highlight">import HandyScroll from &quot;vue-handy-scroll&quot;;</span>
 
   export default {
     name: &quot;DemoPopup&quot;,
@@ -72,7 +78,7 @@
     methods: {
       openPopup() {
         this.popupHidden = false;
-        <span class="hs-highlight">EventBus.$emit(&quot;update&quot;, this.$refs.popup.$el);</span>
+        <span class="hs-highlight">HandyScroll.EventBus.emit(&quot;update&quot;, {sourceElement: this.$refs.popup.$el});</span>
       }
     }
   };
@@ -95,17 +101,17 @@
     }
 
     // About ::v-deep - https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
-    <span class="hs-highlight">&amp;::v-deep .handy-scroll-body {</span>
+    <span class="hs-highlight">&amp; ::v-deep(.handy-scroll-body) {</span>
       height:550px;
       width:100%;
     }
 
-    <span class="hs-highlight">&amp;::v-deep .handy-scroll:not(.handy-scroll-hidden) {</span>
+    <span class="hs-highlight">&amp; ::v-deep(.handy-scroll:not(.handy-scroll-hidden)) {</span>
       bottom:10px; // same value as the bottom padding
       left:10px; // same value as the left padding
     }
 
-    <span class="hs-highlight">&amp;::v-deep .handy-scroll-area {</span>
+    <span class="hs-highlight">&amp; ::v-deep(.handy-scroll-area) {</span>
       font-size:0;
       line-height:0;
       width:100%;
@@ -117,53 +123,57 @@
 </template>
 
 <script>
-  import HandyScroll, {EventBus} from "vue-handy-scroll";
-  import vClickOutside from "v-click-outside";
+import {ref, onMounted, onUnmounted} from "vue";
+import HandyScroll from "vue-handy-scroll";
 
-  export default {
-    name: "DemoPopup",
-    components: {
-      HandyScroll
-    },
-    directives: {
-      clickOutside: vClickOutside.directive
-    },
-    props: {
-      unobtrusive: {
-        type: Boolean,
-        default: false
-      }
-    },
-    data() {
-      return {
-        popupHidden: true
-      }
-    },
-    methods: {
-      openPopup() {
-        this.popupHidden = false;
-        let hsContainer = this.$refs.popup.$refs.container;
-        this.$nextTick(() => hsContainer.scrollLeft = hsContainer.scrollWidth);
-        EventBus.$emit("update", hsContainer);
-      },
-      onClickOutside({target}) {
-        if (!this.popupHidden && !target.classList.contains("hs-open-popup")) {
-          this.popupHidden = true;
-        }
-      }
+export default {
+  name: "DemoPopup",
+  components: {
+    HandyScroll
+  },
+  props: {
+    unobtrusive: {
+      type: Boolean,
+      default: false
     }
-  };
+  },
+  setup() {
+    let popupHidden = ref(true);
+    let globalClickHandler = ({target}) => {
+      if (!popupHidden.value && !target.closest(".hs-popup, .hs-open-popup")) {
+        popupHidden.value = true;
+      }
+    };
+    onMounted(() => {
+      document.addEventListener("click", globalClickHandler, false);
+    });
+    onUnmounted(() => {
+      document.removeEventListener("click", globalClickHandler, false);
+    });
+    return {
+      popupHidden
+    };
+  },
+  methods: {
+    openPopup() {
+      this.popupHidden = false;
+      let hsContainer = this.$refs.popup.$refs.container;
+      this.$nextTick(() => hsContainer.scrollLeft = hsContainer.scrollWidth);
+      HandyScroll.EventBus.emit("update", {sourceElement: hsContainer});
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
-  @import (reference) "../assets/css/ui";
+  @import (reference) "../../assets/css/ui";
 
   .demo-popup .hs-popup {
     background:@bg-color;
     box-shadow:0 0 0 100vw fade(#000, 75%);
     height:550px;
     left:50%;
-    margin-left:-700px / 2;
+    margin-left:(-700px / 2);
     padding:10px;
     position:fixed;
     text-align:center;
@@ -194,17 +204,17 @@
     }
 
     // About ::v-deep - https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
-    &::v-deep .handy-scroll-body {
+    & ::v-deep(.handy-scroll-body) {
       height:550px;
       width:100%;
     }
 
-    &::v-deep .handy-scroll:not(.handy-scroll-hidden) {
+    & ::v-deep(.handy-scroll:not(.handy-scroll-hidden)) {
       bottom:10px; // same value as the bottom padding
       left:10px; // same value as the left padding
     }
 
-    &::v-deep .handy-scroll-area {
+    & ::v-deep(.handy-scroll-area) {
       font-size:0;
       line-height:0;
       width:100%;

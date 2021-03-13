@@ -1,52 +1,25 @@
 {
   "name": "vue-handy-scroll-site",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "serve-prod": "vue-cli-service serve --mode=production"
+    "build": "rollup -c"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
     "normalize.css": "^8.0.1",
-    "v-click-outside": "^3.0.1",
-    "vue": "^2.6.11",
-    "vue-handy-scroll": "^1.0.1"
+    "vue": "^3.0.7",
+    "vue-handy-scroll": "^2.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.4.6",
-    "@vue/cli-plugin-eslint": "^4.4.6",
-    "@vue/cli-service": "^4.4.6",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.4.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "less": "^3.12.2",
-    "less-loader": "^6.2.0",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "@vue/compiler-sfc": "^3.0.7",
+    "eslint": "^7.22.0",
+    "eslint-plugin-vue": "^7.7.0",
+    "less": "^4.1.1",
+    "postcss": "^8.2.8",
+    "rollup": "^2.41.2",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-vue": "^6.0.0"
+  }
 }

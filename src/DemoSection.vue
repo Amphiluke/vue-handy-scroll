@@ -1,8 +1,11 @@
 <template>
-  <div id="app">
-    <DemoHandscrolls :unobtrusive="unobtrusive"/>
-    <DemoPopup :unobtrusive="unobtrusive"/>
-    <DemoUnobtrusive :unobtrusive="unobtrusive" @change="unobtrusive = $event"/>
+  <div>
+    <DemoHandscrolls :unobtrusive="unobtrusive" />
+    <DemoPopup :unobtrusive="unobtrusive" />
+    <DemoUnobtrusive
+      :unobtrusive="unobtrusive"
+      @change="unobtrusive = $event"
+    />
   </div>
 </template>
 
@@ -12,7 +15,7 @@ import DemoPopup from "./components/DemoPopup.vue";
 import DemoUnobtrusive from "./components/DemoUnobtrusive.vue";
 
 export default {
-  name: "app",
+  name: "DemoSection",
   components: {
     DemoHandscrolls,
     DemoPopup,
@@ -23,5 +26,5 @@ export default {
       unobtrusive: false
     };
   }
-}
+};
 </script>

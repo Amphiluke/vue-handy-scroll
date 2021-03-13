@@ -42,7 +42,7 @@
 <body>
 <div id="app"></div>
 
-<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/vue/dist/vue.global.prod.js"></script>
 <script src="node_modules/vue-handy-scroll/dist/handy-scroll.umd.js"></script>
 
 
@@ -78,7 +78,7 @@
   </div>
 </script>
 <script>
-  Vue.component("hello-world", {
+  let HelloWorldComponent = {
     template: "#hello-tpl",
     name: 'HelloWorld',
     props: {
@@ -86,44 +86,41 @@
     },
     methods: {
       updateHS() {
-        window.HandyScroll.EventBus.$emit("update", {sourceElement: this.$el});
+        window.HandyScroll.EventBus.emit("update", {sourceElement: this.$el});
       }
     }
-  });
+  };
 </script>
 
 
 <script type="text/x-template" id="app-tpl">
   <div class="app">
     <handy-scroll ref="hs">
-      <img alt="" src="public/preview.jpg" width="2592" height="1357" @click="updateHS">
+      <img alt="" src="preview.jpg" width="2592" height="1357" @click="updateHS">
       <hello-world msg="Welcome to Your Vue.js App"></hello-world>
     </handy-scroll>
     <handy-scroll ref="hs2">
-      <img alt="" src="public/preview.jpg" width="2592" height="1357" @click="updateHS2">
+      <img alt="" src="preview.jpg" width="2592" height="1357" @click="updateHS2">
       <hello-world msg="Farewell to Your Vue.js App"></hello-world>
     </handy-scroll>
   </div>
 </script>
 <script>
-  let app = {
+  let app = Vue.createApp({
     template: "#app-tpl",
     name: "app",
     methods: {
       updateHS() {
-        window.HandyScroll.EventBus.$emit("update", {sourceElement: this.$refs.hs.$el});
+        window.HandyScroll.EventBus.emit("update", {sourceElement: this.$refs.hs.$el});
       },
       updateHS2() {
-        window.HandyScroll.EventBus.$emit("update", {sourceElement: this.$refs.hs2.$el});
+        window.HandyScroll.EventBus.emit("update", {sourceElement: this.$refs.hs2.$el});
       }
     }
-  };
-
-  Vue.config.productionTip = false;
-
-  new Vue({
-    render: h => h(app),
-  }).$mount("#app");
+  });
+  app.component("hello-world", HelloWorldComponent);
+  app.component("handy-scroll", window.HandyScroll)
+  app.mount("#app");
 </script>
 </body>
 </html>
