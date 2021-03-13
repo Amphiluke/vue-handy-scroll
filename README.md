@@ -142,6 +142,6 @@ You can make the floating scrollbar more “unobtrusive” so that it will appea
 
 ## Live demos
 
-Check out live usage examples [here](https://amphiluke.github.io/vue-handy-scroll/dist/).
+Check out live usage examples [here](https://amphiluke.github.io/vue-handy-scroll/).
 
 You may also find useful this [vue-handy-scroll Pen Collection](https://codepen.io/collection/naLgyg/?grid_type=list) on Codepen.
