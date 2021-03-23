@@ -24,12 +24,12 @@ import HandyScroll from "vue-handy-scroll";
 
 If you don’t use module bundlers but instead prefer using the component directly in a browser, you may add the component on your page through some CDN such as [jsDelivr](https://www.jsdelivr.com/features) or [unpkg](https://unpkg.com/). E.g.:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-handy-scroll/dist/handy-scroll.umd.min.js"></script>
 
 or
 
-<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script src="https://unpkg.com/vue@^3/dist/vue.global.prod.js"></script>
 <script src="https://unpkg.com/vue-handy-scroll/dist/handy-scroll.umd.min.js"></script>
 ```
 
