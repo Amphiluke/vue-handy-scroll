@@ -1,8 +1,8 @@
 /*!
-vue-handy-scroll v2.0.0
+vue-handy-scroll v3.0.0
 https://amphiluke.github.io/vue-handy-scroll/
 */
-import { pushScopeId, popScopeId, openBlock, createBlock, renderSlot, createVNode, withScopeId } from 'vue';
+import { pushScopeId, popScopeId, openBlock, createElementBlock, renderSlot, createElementVNode, normalizeClass } from 'vue';
 
 let handlerRegistry = Object.create(null);
 
@@ -189,8 +189,6 @@ var script = {
   }
 };
 
-const _withId = /*#__PURE__*/withScopeId("data-v-71ecdf2e");
-
 pushScopeId("data-v-71ecdf2e");
 const _hoisted_1 = {
   key: 0,
@@ -200,52 +198,52 @@ const _hoisted_2 = { ref: "strut" };
 const _hoisted_3 = { ref: "strut" };
 popScopeId();
 
-const render = /*#__PURE__*/_withId((_ctx, _cache, $props, $setup, $data, $options) => {
+function render(_ctx, _cache, $props, $setup, $data, $options) {
   return ($props.customViewport)
-    ? (openBlock(), createBlock("div", _hoisted_1, [
+    ? (openBlock(), createElementBlock("div", _hoisted_1, [
         renderSlot(_ctx.$slots, "viewport-before"),
-        createVNode("div", {
+        createElementVNode("div", {
           ref: "scrollBody",
           class: "handy-scroll-body",
-          onScroll: _cache[4] || (_cache[4] = (...args) => ($options.checkVisibility && $options.checkVisibility(...args)))
+          onScroll: _cache[3] || (_cache[3] = (...args) => ($options.checkVisibility && $options.checkVisibility(...args)))
         }, [
           renderSlot(_ctx.$slots, "body-before"),
-          createVNode("div", {
+          createElementVNode("div", {
             ref: "container",
-            class: ["handy-scroll-area", {'handy-scroll-unobtrusive': $props.unobtrusive}],
-            onScroll: _cache[2] || (_cache[2] = (...args) => ($options.handleContainerScroll && $options.handleContainerScroll(...args))),
-            onFocusin: _cache[3] || (_cache[3] = (...args) => ($options.handleContainerFocus && $options.handleContainerFocus(...args)))
+            class: normalizeClass(["handy-scroll-area", {'handy-scroll-unobtrusive': $props.unobtrusive}]),
+            onScroll: _cache[1] || (_cache[1] = (...args) => ($options.handleContainerScroll && $options.handleContainerScroll(...args))),
+            onFocusin: _cache[2] || (_cache[2] = (...args) => ($options.handleContainerFocus && $options.handleContainerFocus(...args)))
           }, [
             renderSlot(_ctx.$slots, "default"),
-            createVNode("div", {
+            createElementVNode("div", {
               ref: "widget",
-              class: ["handy-scroll", {'handy-scroll-hidden': !$data.visible}],
-              onScroll: _cache[1] || (_cache[1] = (...args) => ($options.handleWidgetScroll && $options.handleWidgetScroll(...args)))
+              class: normalizeClass(["handy-scroll", {'handy-scroll-hidden': !$data.visible}]),
+              onScroll: _cache[0] || (_cache[0] = (...args) => ($options.handleWidgetScroll && $options.handleWidgetScroll(...args)))
             }, [
-              createVNode("div", _hoisted_2, null, 512 /* NEED_PATCH */)
+              createElementVNode("div", _hoisted_2, null, 512 /* NEED_PATCH */)
             ], 34 /* CLASS, HYDRATE_EVENTS */)
           ], 34 /* CLASS, HYDRATE_EVENTS */),
           renderSlot(_ctx.$slots, "body-after")
         ], 544 /* HYDRATE_EVENTS, NEED_PATCH */),
         renderSlot(_ctx.$slots, "viewport-after")
       ]))
-    : (openBlock(), createBlock("div", {
+    : (openBlock(), createElementBlock("div", {
         key: 1,
         ref: "container",
-        class: ["handy-scroll-area", {'handy-scroll-unobtrusive': $props.unobtrusive}],
-        onScroll: _cache[6] || (_cache[6] = (...args) => ($options.handleContainerScroll && $options.handleContainerScroll(...args))),
-        onFocusin: _cache[7] || (_cache[7] = (...args) => ($options.handleContainerFocus && $options.handleContainerFocus(...args)))
+        class: normalizeClass(["handy-scroll-area", {'handy-scroll-unobtrusive': $props.unobtrusive}]),
+        onScroll: _cache[5] || (_cache[5] = (...args) => ($options.handleContainerScroll && $options.handleContainerScroll(...args))),
+        onFocusin: _cache[6] || (_cache[6] = (...args) => ($options.handleContainerFocus && $options.handleContainerFocus(...args)))
       }, [
         renderSlot(_ctx.$slots, "default"),
-        createVNode("div", {
+        createElementVNode("div", {
           ref: "widget",
-          class: ["handy-scroll", {'handy-scroll-hidden': !$data.visible}],
-          onScroll: _cache[5] || (_cache[5] = (...args) => ($options.handleWidgetScroll && $options.handleWidgetScroll(...args)))
+          class: normalizeClass(["handy-scroll", {'handy-scroll-hidden': !$data.visible}]),
+          onScroll: _cache[4] || (_cache[4] = (...args) => ($options.handleWidgetScroll && $options.handleWidgetScroll(...args)))
         }, [
-          createVNode("div", _hoisted_3, null, 512 /* NEED_PATCH */)
+          createElementVNode("div", _hoisted_3, null, 512 /* NEED_PATCH */)
         ], 34 /* CLASS, HYDRATE_EVENTS */)
       ], 34 /* CLASS, HYDRATE_EVENTS */))
-});
+}
 
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
@@ -281,4 +279,4 @@ script.render = render;
 script.__scopeId = "data-v-71ecdf2e";
 script.__file = "src/handy-scroll.vue";
 
-export default script;
+export { script as default };
