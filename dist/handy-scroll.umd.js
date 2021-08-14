@@ -1,5 +1,5 @@
 /*!
-vue-handy-scroll v2.0.0
+vue-handy-scroll v3.0.0
 https://amphiluke.github.io/vue-handy-scroll/
 */
 (function (global, factory) {
@@ -70,10 +70,10 @@ https://amphiluke.github.io/vue-handy-scroll/
     },
 
     mounted: function mounted() {
-      var this$1 = this;
+      var this$1$1 = this;
 
       this.queueUpdate().then(function () {
-        this$1.addEventHandlers();
+        this$1$1.addEventHandlers();
       });
     },
 
@@ -139,9 +139,9 @@ https://amphiluke.github.io/vue-handy-scroll/
       },
 
       handleContainerFocus: function handleContainerFocus() {
-        var this$1 = this;
+        var this$1$1 = this;
 
-        setTimeout(function () { return this$1.syncWidget(); }, 0);
+        setTimeout(function () { return this$1$1.syncWidget(); }, 0);
       },
 
       checkVisibility: function checkVisibility() {
@@ -215,8 +215,6 @@ https://amphiluke.github.io/vue-handy-scroll/
     }
   };
 
-  var _withId = /*#__PURE__*/vue.withScopeId("data-v-71ecdf2e");
-
   vue.pushScopeId("data-v-71ecdf2e");
   var _hoisted_1 = {
     key: 0,
@@ -226,14 +224,14 @@ https://amphiluke.github.io/vue-handy-scroll/
   var _hoisted_3 = { ref: "strut" };
   vue.popScopeId();
 
-  var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
+  function render(_ctx, _cache, $props, $setup, $data, $options) {
     return ($props.customViewport)
-      ? (vue.openBlock(), vue.createBlock("div", _hoisted_1, [
+      ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1, [
           vue.renderSlot(_ctx.$slots, "viewport-before"),
-          vue.createVNode("div", {
+          vue.createElementVNode("div", {
             ref: "scrollBody",
             class: "handy-scroll-body",
-            onScroll: _cache[4] || (_cache[4] = function () {
+            onScroll: _cache[3] || (_cache[3] = function () {
               var args = [], len = arguments.length;
               while ( len-- ) args[ len ] = arguments[ len ];
 
@@ -241,16 +239,16 @@ https://amphiluke.github.io/vue-handy-scroll/
     })
           }, [
             vue.renderSlot(_ctx.$slots, "body-before"),
-            vue.createVNode("div", {
+            vue.createElementVNode("div", {
               ref: "container",
-              class: ["handy-scroll-area", {'handy-scroll-unobtrusive': $props.unobtrusive}],
-              onScroll: _cache[2] || (_cache[2] = function () {
+              class: vue.normalizeClass(["handy-scroll-area", {'handy-scroll-unobtrusive': $props.unobtrusive}]),
+              onScroll: _cache[1] || (_cache[1] = function () {
                 var args = [], len = arguments.length;
                 while ( len-- ) args[ len ] = arguments[ len ];
 
                 return ($options.handleContainerScroll && $options.handleContainerScroll.apply($options, args));
     }),
-              onFocusin: _cache[3] || (_cache[3] = function () {
+              onFocusin: _cache[2] || (_cache[2] = function () {
                 var args = [], len = arguments.length;
                 while ( len-- ) args[ len ] = arguments[ len ];
 
@@ -258,34 +256,34 @@ https://amphiluke.github.io/vue-handy-scroll/
     })
             }, [
               vue.renderSlot(_ctx.$slots, "default"),
-              vue.createVNode("div", {
+              vue.createElementVNode("div", {
                 ref: "widget",
-                class: ["handy-scroll", {'handy-scroll-hidden': !$data.visible}],
-                onScroll: _cache[1] || (_cache[1] = function () {
+                class: vue.normalizeClass(["handy-scroll", {'handy-scroll-hidden': !$data.visible}]),
+                onScroll: _cache[0] || (_cache[0] = function () {
                   var args = [], len = arguments.length;
                   while ( len-- ) args[ len ] = arguments[ len ];
 
                   return ($options.handleWidgetScroll && $options.handleWidgetScroll.apply($options, args));
     })
               }, [
-                vue.createVNode("div", _hoisted_2, null, 512 /* NEED_PATCH */)
+                vue.createElementVNode("div", _hoisted_2, null, 512 /* NEED_PATCH */)
               ], 34 /* CLASS, HYDRATE_EVENTS */)
             ], 34 /* CLASS, HYDRATE_EVENTS */),
             vue.renderSlot(_ctx.$slots, "body-after")
           ], 544 /* HYDRATE_EVENTS, NEED_PATCH */),
           vue.renderSlot(_ctx.$slots, "viewport-after")
         ]))
-      : (vue.openBlock(), vue.createBlock("div", {
+      : (vue.openBlock(), vue.createElementBlock("div", {
           key: 1,
           ref: "container",
-          class: ["handy-scroll-area", {'handy-scroll-unobtrusive': $props.unobtrusive}],
-          onScroll: _cache[6] || (_cache[6] = function () {
+          class: vue.normalizeClass(["handy-scroll-area", {'handy-scroll-unobtrusive': $props.unobtrusive}]),
+          onScroll: _cache[5] || (_cache[5] = function () {
             var args = [], len = arguments.length;
             while ( len-- ) args[ len ] = arguments[ len ];
 
             return ($options.handleContainerScroll && $options.handleContainerScroll.apply($options, args));
     }),
-          onFocusin: _cache[7] || (_cache[7] = function () {
+          onFocusin: _cache[6] || (_cache[6] = function () {
             var args = [], len = arguments.length;
             while ( len-- ) args[ len ] = arguments[ len ];
 
@@ -293,20 +291,20 @@ https://amphiluke.github.io/vue-handy-scroll/
     })
         }, [
           vue.renderSlot(_ctx.$slots, "default"),
-          vue.createVNode("div", {
+          vue.createElementVNode("div", {
             ref: "widget",
-            class: ["handy-scroll", {'handy-scroll-hidden': !$data.visible}],
-            onScroll: _cache[5] || (_cache[5] = function () {
+            class: vue.normalizeClass(["handy-scroll", {'handy-scroll-hidden': !$data.visible}]),
+            onScroll: _cache[4] || (_cache[4] = function () {
               var args = [], len = arguments.length;
               while ( len-- ) args[ len ] = arguments[ len ];
 
               return ($options.handleWidgetScroll && $options.handleWidgetScroll.apply($options, args));
     })
           }, [
-            vue.createVNode("div", _hoisted_3, null, 512 /* NEED_PATCH */)
+            vue.createElementVNode("div", _hoisted_3, null, 512 /* NEED_PATCH */)
           ], 34 /* CLASS, HYDRATE_EVENTS */)
         ], 34 /* CLASS, HYDRATE_EVENTS */))
-  });
+  }
 
   function styleInject(css, ref) {
     if ( ref === void 0 ) { ref = {}; }
