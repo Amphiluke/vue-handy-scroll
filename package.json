@@ -1,24 +1,24 @@
 {
   "name": "vue-handy-scroll-site",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "build": "rollup -c"
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
-    "vue": "^3.0.7",
-    "vue-handy-scroll": "^2.0.0"
+    "vue": "^3.2.2",
+    "vue-handy-scroll": "^3.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^11.2.0",
-    "@vue/compiler-sfc": "^3.0.7",
-    "eslint": "^7.22.0",
-    "eslint-plugin-vue": "^7.7.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@vue/compiler-sfc": "^3.2.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^7.16.0",
     "less": "^4.1.1",
-    "postcss": "^8.2.8",
-    "rollup": "^2.41.2",
-    "rollup-plugin-postcss": "^4.0.0",
+    "postcss": "^8.3.6",
+    "rollup": "^2.56.2",
+    "rollup-plugin-postcss": "^4.0.1",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-vue": "^6.0.0"
   }
