@@ -134,6 +134,7 @@ export default {
 
     // About ::v-deep - https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
     & ::v-deep(.handy-scroll-body) {
+      overscroll-behavior:contain;
       height:550px;
       width:100%;
     }
