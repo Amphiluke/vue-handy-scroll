@@ -6,7 +6,7 @@ https://amphiluke.github.io/vue-handy-scroll/
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue')) :
   typeof define === 'function' && define.amd ? define(['vue'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.HandyScroll = factory(global.Vue));
-}(this, (function (vue) { 'use strict';
+})(this, (function (vue) { 'use strict';
 
   var handlerRegistry = Object.create(null);
 
@@ -215,14 +215,12 @@ https://amphiluke.github.io/vue-handy-scroll/
     }
   };
 
-  vue.pushScopeId("data-v-71ecdf2e");
   var _hoisted_1 = {
     key: 0,
     class: "handy-scroll-viewport"
   };
   var _hoisted_2 = { ref: "strut" };
   var _hoisted_3 = { ref: "strut" };
-  vue.popScopeId();
 
   function render(_ctx, _cache, $props, $setup, $data, $options) {
     return ($props.customViewport)
@@ -342,4 +340,4 @@ https://amphiluke.github.io/vue-handy-scroll/
 
   return script;
 
-})));
+}));

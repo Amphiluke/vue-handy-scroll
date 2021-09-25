@@ -2,7 +2,7 @@
 vue-handy-scroll v3.0.0
 https://amphiluke.github.io/vue-handy-scroll/
 */
-import { pushScopeId, popScopeId, openBlock, createElementBlock, renderSlot, createElementVNode, normalizeClass } from 'vue';
+import { openBlock, createElementBlock, renderSlot, createElementVNode, normalizeClass } from 'vue';
 
 let handlerRegistry = Object.create(null);
 
@@ -189,14 +189,12 @@ var script = {
   }
 };
 
-pushScopeId("data-v-71ecdf2e");
 const _hoisted_1 = {
   key: 0,
   class: "handy-scroll-viewport"
 };
 const _hoisted_2 = { ref: "strut" };
 const _hoisted_3 = { ref: "strut" };
-popScopeId();
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return ($props.customViewport)
