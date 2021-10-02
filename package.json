@@ -1,6 +1,6 @@
 {
   "name": "vue-handy-scroll",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Handy floating scrollbar component for Vue 3",
   "main": "dist/handy-scroll.umd.js",
   "module": "dist/handy-scroll.esm.js",
