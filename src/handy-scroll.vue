@@ -145,7 +145,12 @@ export default {
     },
 
     handleContainerFocus() {
-      setTimeout(() => this.syncWidget(), 0);
+      setTimeout(() => {
+        // The widget might be unmounted before the timer is triggered (issue Amphiluke/handy-scroll#14)
+        if (this.$refs && this.$refs.widget) {
+          this.syncWidget();
+        }
+      }, 0);
     },
 
     checkVisibility() {

@@ -1,5 +1,5 @@
 /*!
-vue-handy-scroll v3.0.0
+vue-handy-scroll v3.0.1
 https://amphiluke.github.io/vue-handy-scroll/
 */
 (function (global, factory) {
@@ -141,7 +141,12 @@ https://amphiluke.github.io/vue-handy-scroll/
       handleContainerFocus: function handleContainerFocus() {
         var this$1$1 = this;
 
-        setTimeout(function () { return this$1$1.syncWidget(); }, 0);
+        setTimeout(function () {
+          // The widget might be unmounted before the timer is triggered (issue Amphiluke/handy-scroll#14)
+          if (this$1$1.$refs && this$1$1.$refs.widget) {
+            this$1$1.syncWidget();
+          }
+        }, 0);
       },
 
       checkVisibility: function checkVisibility() {
