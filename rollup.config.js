@@ -2,7 +2,7 @@ import pkg from "./package.json";
 import vue from "rollup-plugin-vue";
 import buble from "@rollup/plugin-buble";
 import {terser} from "rollup-plugin-terser";
-import resolve from "rollup-plugin-node-resolve";
+import nodeResolve from "@rollup/plugin-node-resolve";
 import postcss from "rollup-plugin-postcss";
 
 let plugins = {
@@ -14,7 +14,7 @@ let plugins = {
     output: {comments: /^!/}
   }),
   buble: buble(),
-  resolve: resolve()
+  resolve: nodeResolve()
 };
 
 let config = {
