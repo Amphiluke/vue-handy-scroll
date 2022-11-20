@@ -1,7 +1,7 @@
-import pkg from "./package.json";
+import pkg from "./package.json" assert {type: "json"};
 import vue from "rollup-plugin-vue";
 import buble from "@rollup/plugin-buble";
-import {terser} from "rollup-plugin-terser";
+import terser from "@rollup/plugin-terser";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import postcss from "rollup-plugin-postcss";
 
