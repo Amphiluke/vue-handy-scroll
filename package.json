@@ -38,10 +38,10 @@
     "@rollup/plugin-terser": "^0.1.0",
     "@vue/compiler-sfc": "^3.2.45",
     "eslint": "^8.28.0",
-    "eslint-plugin-vue": "^9.7.0",
+    "eslint-plugin-vue": "^9.8.0",
     "husky": "^8.0.2",
     "postcss": "^8.4.19",
-    "rollup": "^3.3.0",
+    "rollup": "^3.5.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-vue": "^6.0.0"
   },
