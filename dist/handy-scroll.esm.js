@@ -1,5 +1,5 @@
 /*!
-vue-handy-scroll v3.0.1
+vue-handy-scroll v3.0.2
 https://amphiluke.github.io/vue-handy-scroll/
 */
 import { openBlock, createElementBlock, renderSlot, createElementVNode, normalizeClass } from 'vue';
