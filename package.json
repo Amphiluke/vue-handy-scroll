@@ -35,13 +35,13 @@
   "devDependencies": {
     "@rollup/plugin-buble": "^1.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-terser": "^0.1.0",
+    "@rollup/plugin-terser": "^0.2.1",
     "@vue/compiler-sfc": "^3.2.45",
-    "eslint": "^8.28.0",
+    "eslint": "^8.30.0",
     "eslint-plugin-vue": "^9.8.0",
     "husky": "^8.0.2",
-    "postcss": "^8.4.19",
-    "rollup": "^3.5.0",
+    "postcss": "^8.4.20",
+    "rollup": "^3.8.1",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-vue": "^6.0.0"
   },
