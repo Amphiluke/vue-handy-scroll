@@ -1,4 +1,4 @@
-import pkg from "./package.json" assert {type: "json"};
+import pkg from "./package.json" with {type: "json"};
 import vue from "rollup-plugin-vue";
 import buble from "@rollup/plugin-buble";
 import terser from "@rollup/plugin-terser";

@@ -270,10 +270,10 @@ https://amphiluke.github.io/vue-handy-scroll/
     })
               }, [
                 vue.createElementVNode("div", _hoisted_2, null, 512 /* NEED_PATCH */)
-              ], 34 /* CLASS, HYDRATE_EVENTS */)
-            ], 34 /* CLASS, HYDRATE_EVENTS */),
+              ], 34 /* CLASS, NEED_HYDRATION */)
+            ], 34 /* CLASS, NEED_HYDRATION */),
             vue.renderSlot(_ctx.$slots, "body-after")
-          ], 544 /* HYDRATE_EVENTS, NEED_PATCH */),
+          ], 544 /* NEED_HYDRATION, NEED_PATCH */),
           vue.renderSlot(_ctx.$slots, "viewport-after")
         ]))
       : (vue.openBlock(), vue.createElementBlock("div", {
@@ -305,8 +305,8 @@ https://amphiluke.github.io/vue-handy-scroll/
     })
           }, [
             vue.createElementVNode("div", _hoisted_3, null, 512 /* NEED_PATCH */)
-          ], 34 /* CLASS, HYDRATE_EVENTS */)
-        ], 34 /* CLASS, HYDRATE_EVENTS */))
+          ], 34 /* CLASS, NEED_HYDRATION */)
+        ], 34 /* CLASS, NEED_HYDRATION */))
   }
 
   function styleInject(css, ref) {

@@ -224,10 +224,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               onScroll: _cache[0] || (_cache[0] = (...args) => ($options.handleWidgetScroll && $options.handleWidgetScroll(...args)))
             }, [
               createElementVNode("div", _hoisted_2, null, 512 /* NEED_PATCH */)
-            ], 34 /* CLASS, HYDRATE_EVENTS */)
-          ], 34 /* CLASS, HYDRATE_EVENTS */),
+            ], 34 /* CLASS, NEED_HYDRATION */)
+          ], 34 /* CLASS, NEED_HYDRATION */),
           renderSlot(_ctx.$slots, "body-after")
-        ], 544 /* HYDRATE_EVENTS, NEED_PATCH */),
+        ], 544 /* NEED_HYDRATION, NEED_PATCH */),
         renderSlot(_ctx.$slots, "viewport-after")
       ]))
     : (openBlock(), createElementBlock("div", {
@@ -244,8 +244,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           onScroll: _cache[4] || (_cache[4] = (...args) => ($options.handleWidgetScroll && $options.handleWidgetScroll(...args)))
         }, [
           createElementVNode("div", _hoisted_3, null, 512 /* NEED_PATCH */)
-        ], 34 /* CLASS, HYDRATE_EVENTS */)
-      ], 34 /* CLASS, HYDRATE_EVENTS */))
+        ], 34 /* CLASS, NEED_HYDRATION */)
+      ], 34 /* CLASS, NEED_HYDRATION */))
 }
 
 function styleInject(css, ref) {
