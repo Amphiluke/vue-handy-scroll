@@ -34,7 +34,7 @@ let EventBus = {
         }
       }
     }
-  }
+  },
 };
 
 var script = {
@@ -43,17 +43,17 @@ var script = {
   props: {
     customViewport: {
       type: Boolean,
-      default: false
+      default: false,
     },
     unobtrusive: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   data() {
     return {
-      visible: true
+      visible: true,
     };
   },
 
@@ -190,8 +190,8 @@ var script = {
       }
       this.syncWidget();
       this.checkVisibility(); // fixes issue Amphiluke/floating-scroll#2
-    }
-  }
+    },
+  },
 };
 
 const _hoisted_1 = {

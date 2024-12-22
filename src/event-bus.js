@@ -28,7 +28,7 @@ let EventBus = {
         }
       }
     }
-  }
+  },
 };
 
 export default EventBus;

@@ -13,7 +13,6 @@
     "src"
   ],
   "scripts": {
-    "prepare": "husky install",
     "lint": "eslint \"src/**/*.{js,vue}\"",
     "build": "rollup -c"
   },
@@ -33,15 +32,17 @@
   },
   "homepage": "https://amphiluke.github.io/vue-handy-scroll/",
   "devDependencies": {
+    "@eslint/js": "^9.17.0",
     "@rollup/plugin-buble": "^1.0.3",
-    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.4",
-    "@vue/compiler-sfc": "^3.5.9",
-    "eslint": "^8.57.1",
-    "eslint-plugin-vue": "^9.28.0",
-    "husky": "^8.0.3",
-    "postcss": "^8.4.47",
-    "rollup": "^4.22.4",
+    "@stylistic/eslint-plugin-js": "^2.12.1",
+    "@vue/compiler-sfc": "^3.5.13",
+    "eslint": "^9.17.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "globals": "^15.14.0",
+    "postcss": "^8.4.49",
+    "rollup": "^4.29.1",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-vue": "^6.0.0"
   },

@@ -61,17 +61,17 @@ export default {
   props: {
     customViewport: {
       type: Boolean,
-      default: false
+      default: false,
     },
     unobtrusive: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   data() {
     return {
-      visible: true
+      visible: true,
     };
   },
 
@@ -208,8 +208,8 @@ export default {
       }
       this.syncWidget();
       this.checkVisibility(); // fixes issue Amphiluke/floating-scroll#2
-    }
-  }
+    },
+  },
 };
 </script>
 

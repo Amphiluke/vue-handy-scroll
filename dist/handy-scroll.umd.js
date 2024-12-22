@@ -41,7 +41,7 @@ https://amphiluke.github.io/vue-handy-scroll/
           }
         }
       }
-    }
+    },
   };
 
   var script = {
@@ -50,17 +50,17 @@ https://amphiluke.github.io/vue-handy-scroll/
     props: {
       customViewport: {
         type: Boolean,
-        default: false
+        default: false,
       },
       unobtrusive: {
         type: Boolean,
-        default: false
-      }
+        default: false,
+      },
     },
 
     data: function data() {
       return {
-        visible: true
+        visible: true,
       };
     },
 
@@ -216,8 +216,8 @@ https://amphiluke.github.io/vue-handy-scroll/
         }
         this.syncWidget();
         this.checkVisibility(); // fixes issue Amphiluke/floating-scroll#2
-      }
-    }
+      },
+    },
   };
 
   var _hoisted_1 = {
