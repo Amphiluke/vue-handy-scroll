@@ -2,6 +2,9 @@
 
 Handy floating scrollbar component for Vue 3.
 
+> [!WARNING]
+> This Vue component has been deprecated. Consider migrating to the [handy-scroll](https://github.com/Amphiluke/handy-scroll) web component. Note that you may need to update the `compilerOptions` configuration parameter. More on this in [the section about Custom Elements](https://vuejs.org/guide/extras/web-components.html#using-custom-elements-in-vue) of the official Vue guide.
+
 ## Synopsis
 
 vue-handy-scroll is a component that solves the problem of scrolling lengthy content horizontally when that content doesn’t fit into the viewport. It creates a scrollbar which is attached at the bottom of the scrollable container’s visible area and which doesn’t get out of sight when the page is scrolled, thereby making horizontal scrolling of the container much handier.
